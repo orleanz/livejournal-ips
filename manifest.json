@@ -7,7 +7,7 @@
   
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": ["http://*.livejournal.com/*", "http://lentascope.net/*"],
       "js": ["jquery-2.1.3.min.js",  "content.js"]
     }
   ],
@@ -15,10 +15,5 @@
   "icons": { "16": "icon.png",
    "48": "icon48.png"
    }
-
-  // "browser_action": {
-  //   "default_icon": "icon.png"
-  // }
-
 
 }
