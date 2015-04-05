@@ -5,6 +5,8 @@
 
     var collectedIPs = {};
 
+    debugger;
+    
     $(selector).each(function(ind, span) {
         var re = /\d+\.\d+\.\d+\.\d+/i;
         var found = span.textContent.match(re);
