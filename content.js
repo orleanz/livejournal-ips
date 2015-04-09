@@ -1,13 +1,15 @@
 (function() {
 
     // var selector = "span.b-leaf-ipaddr";
-    var selector = "span";
+    var selectors = ["span","td"];
 
     var collectedIPs = {};
 
     debugger;
-    
-    $(selector).each(function(ind, span) {
+
+    for (var i = 0; i < selectors.length; i++) {
+      var selector = selectors[i]
+      $(selector).each(function(ind, span) {
         var re = /\d+\.\d+\.\d+\.\d+/i;
         var found = span.textContent.match(re);
         if (found) {
@@ -18,7 +20,8 @@
             }
             collectedIPs[ip].push(span);
         }
-    });
+      });
+    }
 
     for (ip in collectedIPs) {
 
