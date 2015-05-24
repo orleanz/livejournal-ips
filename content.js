@@ -40,6 +40,20 @@
       });
     }
 
+    function beautify(geo_info) {
+      var src = geo_info.replace(/\\/g, '').split(':');
+      var out = [src[0]];
+      for (var i = 1; i < src.length; i++) {
+        last = out[out.length - 1]
+        newOne = src[i]
+        if (last == newOne) {}
+        else if (last == newOne + " City" || last == newOne + "aya Oblast") {
+          out[out.length - 1] = newOne
+        } else out.push(newOne)
+      }
+      return out.join(', ')
+    }
+
     for (ip in collectedIPs) {
 
         (function(ip) {
@@ -51,7 +65,7 @@
                 url: "http://lentascope.net/ip/" + ip,
                 success: function(geo_info){
                     for (var i = 0; i < els.length; i++) {
-                        els[i].textContent = "(" + ip + "), " + geo_info + "";
+                        els[i].innerHTML = "(" + ip + ")<br/>" + beautify(geo_info);
                     }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
